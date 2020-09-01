@@ -1,10 +1,10 @@
-package com.bitera.ethdemo;
+package com.bitera.ethdemo.routes;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-public class MainController {
+public class Routes {
 
     @RequestMapping("/")
     public String index() {
