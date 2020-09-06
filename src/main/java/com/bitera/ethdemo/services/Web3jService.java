@@ -3,6 +3,7 @@ package com.bitera.ethdemo.services;
 import com.bitera.ethdemo.domain.BlockchainTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.RawTransaction;
@@ -27,6 +28,9 @@ public class Web3jService {
 
     @Autowired
     private Web3j web3j;
+
+    @Value("${eth.defaultAccount.privateKey}")
+    private String privateKey;
 
     public String getClientVersion() throws IOException {
     Web3ClientVersion web3ClientVersion = web3j.web3ClientVersion().send();
@@ -59,7 +63,7 @@ public class Web3jService {
                 wei);
 
         //Don't do this in prod :B
-        Credentials credentials = Credentials.create("a0cce92cf7d43649a5410b23466931f51f0309089b6d27a2ab3cd4d016ce31eb");
+        Credentials credentials = Credentials.create(this.privateKey);
 
         // Sign the transaction
         byte[] signedMessage = TransactionEncoder.signMessage(rawTransaction, credentials);

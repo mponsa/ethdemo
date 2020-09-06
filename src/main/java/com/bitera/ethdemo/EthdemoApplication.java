@@ -3,6 +3,7 @@ package com.bitera.ethdemo;
 import java.awt.*;
 import java.util.Arrays;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,7 @@ import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 
 
 @SpringBootApplication
+@EnableEncryptableProperties
 public class EthdemoApplication {
 
 	public static void main(String[] args) {

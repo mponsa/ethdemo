@@ -1,7 +1,9 @@
 package com.bitera.ethdemo.routes;
 
 import com.bitera.ethdemo.domain.BlockchainTransaction;
+import com.bitera.ethdemo.domain.DefaultResponse;
 import com.bitera.ethdemo.services.Web3jService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,29 +23,28 @@ public class Routes {
     }
 
     @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
+    public ResponseEntity<DefaultResponse> index() {
+        return ResponseEntity.ok(new DefaultResponse("Greetings from Spring Boot!"));
     }
 
     @RequestMapping("/ping")
-    public String ping() {
-        return "pong";
+    public ResponseEntity<DefaultResponse> ping() {
+        return ResponseEntity.ok(new DefaultResponse("pong"));
     }
 
     @PostMapping("/eth/transfer")
     @ResponseBody
-    public String send(@RequestParam String address) throws IOException {
-        BlockchainTransaction response = service.sendEth(address);
-        return response.getId();
+    public ResponseEntity<BlockchainTransaction> send(@RequestParam String address) throws IOException {
+        return ResponseEntity.ok(service.sendEth(address));
     }
 
     @GetMapping("/eth/gas")
-    public String gasPrice() throws IOException {
-        return service.gasPrice();
+    public ResponseEntity<DefaultResponse> gasPrice() throws IOException {
+        return ResponseEntity.ok(new DefaultResponse(service.gasPrice()));
     }
 
     @GetMapping("/eth/clientVersion")
-    public String clientVersion() throws IOException {
-        return service.getClientVersion();
+    public ResponseEntity<DefaultResponse> clientVersion() throws IOException {
+        return ResponseEntity.ok(new DefaultResponse(service.getClientVersion()));
     }
 }
