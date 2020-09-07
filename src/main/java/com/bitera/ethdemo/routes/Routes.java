@@ -38,11 +38,11 @@ public class Routes {
         return ResponseEntity.ok(service.sendEth(address));
     }
 
+    // estas para que las agregaste?
     @GetMapping("/eth/gas")
     public ResponseEntity<DefaultResponse> gasPrice() throws IOException {
         return ResponseEntity.ok(new DefaultResponse(service.gasPrice()));
     }
-
     @GetMapping("/eth/clientVersion")
     public ResponseEntity<DefaultResponse> clientVersion() throws IOException {
         return ResponseEntity.ok(new DefaultResponse(service.getClientVersion()));
