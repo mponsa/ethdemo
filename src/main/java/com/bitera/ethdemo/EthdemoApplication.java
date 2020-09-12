@@ -1,3 +1,4 @@
+// este archivo (y el proyecto) los creaste a mano o usando la cli de springboot?
 package com.bitera.ethdemo;
 
 import java.awt.*;
@@ -44,7 +45,7 @@ public class EthdemoApplication {
 //		};
 //	}
 //
-//
+//  te lo pregunte por otro lado indirectamente, pero por que cambiaste esto?
 //	public static Web3j initializeNode(){
 //	    System.out.println("Connecting to Ethereum...");
 //        Web3j web3 = Web3j.build(new HttpService("https://ropsten.infura.io/v3/fb6f63b2dff942859fc3d4f668ef92f9"));
